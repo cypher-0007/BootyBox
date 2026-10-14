@@ -13,6 +13,16 @@ export default function HeroBanner({
 
   const current = banners[currentIndex] || banners[0];
   const isSaved = watchlist.some((item) => item.id === current.id);
+  const thumbnailCount = Math.min(5, banners.length);
+  const thumbnailStart = Math.max(0, Math.min(
+    currentIndex - Math.floor(thumbnailCount / 2),
+    banners.length - thumbnailCount
+  ));
+  const visibleBanners = banners.slice(thumbnailStart, thumbnailStart + thumbnailCount);
+
+  useEffect(() => {
+    if (currentIndex >= banners.length) setCurrentIndex(0);
+  }, [currentIndex, banners.length]);
 
   useEffect(() => {
     if (isPaused) return;
@@ -149,21 +159,25 @@ export default function HeroBanner({
 
         {/* Thumbnail Selector on Desktop */}
         <div className="absolute right-4 sm:right-6 bottom-12 hidden lg:flex items-center gap-4">
-          <div className="flex items-center gap-2.5 bg-[#0b0f17]/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
-            {banners.map((item, idx) => (
-              <button
-                key={item.id}
-                onClick={() => setCurrentIndex(idx)}
-                className={`relative w-20 h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
-                  currentIndex === idx 
-                    ? 'border-amber-400 scale-105 shadow-md shadow-amber-500/30' 
-                    : 'border-transparent opacity-60 hover:opacity-100'
-                }`}
-              >
-                <img src={item.poster} alt={item.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-black/20" />
-              </button>
-            ))}
+          <div className="flex items-center gap-1.5 2xl:gap-2.5 bg-[#0b0f17]/90 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 shadow-2xl">
+            {visibleBanners.map((item, idx) => {
+              const bannerIndex = thumbnailStart + idx;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentIndex(bannerIndex)}
+                  title={item.title}
+                  className={`relative w-14 h-9 2xl:w-20 2xl:h-12 rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${
+                    currentIndex === bannerIndex
+                      ? 'border-amber-400 scale-105 shadow-md shadow-amber-500/30'
+                      : 'border-transparent opacity-60 hover:opacity-100'
+                  }`}
+                >
+                  <img src={item.poster} alt={item.title} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-black/20" />
+                </button>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-1.5">

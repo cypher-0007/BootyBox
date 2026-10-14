@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
-import { TOP_RANKED } from '../data/mockData';
 import { ChevronLeft, ChevronRight, Play, Star, Plus, Check } from 'lucide-react';
 
-export default function TopRankedSection({ onWatch, watchlist = [], onToggleWatchlist }) {
+export default function TopRankedSection({ items = [], onWatch, watchlist = [], onToggleWatchlist }) {
   const rowRef = useRef(null);
 
   const scroll = (direction) => {
@@ -50,7 +49,7 @@ export default function TopRankedSection({ onWatch, watchlist = [], onToggleWatc
         ref={rowRef}
         className="flex items-stretch gap-4 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-4"
       >
-        {TOP_RANKED.map((item) => {
+        {items.map((item) => {
           const isSaved = watchlist.some((saved) => saved.id === item.id);
 
           return (

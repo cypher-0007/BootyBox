@@ -44,13 +44,15 @@ A modern, high-performance streaming platform front-end UI built with **React**,
    npm install
    ```
 
-3. Start development server:
+3. Configure TMDB by copying `.env.example` to `.env` and setting `VITE_TMDB_ACCESS_TOKEN` to your TMDB API Read Access Token. The app uses this token for the live home shelves, trending hero, and search. Keep `.env` private; it is excluded from Git. For deployment, set the same variable in your host's environment settings.
+
+4. Start development server:
    ```bash
    npm run dev
    ```
    Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-4. Build for production:
+5. Build for production:
    ```bash
    npm run build
    ```
@@ -64,3 +66,5 @@ A modern, high-performance streaming platform front-end UI built with **React**,
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Icons**: [Lucide React](https://lucide.dev/) + Handcrafted Vector Pirate Icons
 - **Fonts**: Plus Jakarta Sans & Space Grotesk
+
+This product uses the TMDB API but is not endorsed or certified by TMDB.

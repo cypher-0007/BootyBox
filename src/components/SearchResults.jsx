@@ -8,7 +8,9 @@ export default function SearchResults({
   onWatch, 
   watchlist, 
   onToggleWatchlist,
-  onClearSearch 
+  onClearSearch,
+  loading = false,
+  error = null
 }) {
   return (
     <div className="w-full max-w-[1540px] mx-auto px-4 sm:px-6 my-8 space-y-6">
@@ -37,7 +39,11 @@ export default function SearchResults({
       </div>
 
       {/* Results Grid */}
-      {results.length === 0 ? (
+      {loading ? (
+        <p role="status" className="text-center py-16 text-sm text-slate-400">Searching TMDB…</p>
+      ) : error ? (
+        <p role="alert" className="text-center py-16 text-sm text-rose-300">TMDB search failed: {error}</p>
+      ) : results.length === 0 ? (
         <div className="text-center py-16 space-y-4">
           <div className="w-16 h-16 mx-auto rounded-2xl bg-[#121824] border border-[#232d3d] flex items-center justify-center text-slate-500">
             <Search className="w-8 h-8" />

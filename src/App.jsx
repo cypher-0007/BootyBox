@@ -11,6 +11,7 @@ import SearchResults from './components/SearchResults';
 import Footer from './components/Footer';
 import Toast from './components/Toast';
 import PirateLoadingScreen from './components/PirateLoadingScreen';
+import { useAnimation, usePopularMovies, usePopularTV, useTMDBSearch, useTop10, useTrending } from './hooks/useTMDB';
 
 import { 
   HERO_BANNERS, 
@@ -18,7 +19,6 @@ import {
   POPULAR_MOVIES, 
   ANIMATION_SERIES, 
   TOP_RANKED, 
-  ALL_MEDIA 
 } from './data/mockData';
 
 import { Film, Tv, Sparkles } from 'lucide-react';
@@ -30,6 +30,20 @@ export default function App() {
   const [selectedType, setSelectedType] = useState('all');
   const [sortBy, setSortBy] = useState('popular');
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Load the live catalog from TMDB and retain the mock catalog as a fallback.
+  const trending = useTrending();
+  const popularTV = usePopularTV();
+  const popularMovies = usePopularMovies();
+  const animation = useAnimation();
+  const top10 = useTop10();
+  const search = useTMDBSearch(searchQuery);
+  const heroItems = trending.data?.length ? trending.data : HERO_BANNERS;
+  const seriesItems = popularTV.data?.length ? popularTV.data : POPULAR_SERIES;
+  const movieItems = popularMovies.data?.length ? popularMovies.data : POPULAR_MOVIES;
+  const animationItems = animation.data?.length ? animation.data : ANIMATION_SERIES;
+  const topItems = top10.data?.length ? top10.data : TOP_RANKED;
+  const catalogError = trending.error || popularTV.error || popularMovies.error || animation.error;
   
   // Modals & Active state
   const [activeVideo, setActiveVideo] = useState(null);
@@ -89,23 +103,13 @@ export default function App() {
   const handleTrailer = (item) => {
     setActiveVideo({
       ...item,
-      videoUrl: item.trailerUrl || item.videoUrl
+      playTrailer: true,
     });
-    showToast({ type: 'info', message: `Playing Official Trailer for ${item.title}` });
+    showToast({ type: 'info', message: `Finding the official trailer for ${item.title}` });
   };
 
   // Search Results Filter
-  const searchResults = useMemo(() => {
-    if (!searchQuery.trim()) return [];
-    const q = searchQuery.toLowerCase().trim();
-    return ALL_MEDIA.filter((item) => {
-      const matchTitle = item.title?.toLowerCase().includes(q);
-      const matchGenres = item.genres?.some((g) => g.toLowerCase().includes(q));
-      const matchOverview = item.overview?.toLowerCase().includes(q);
-      const matchDirector = item.director?.toLowerCase().includes(q);
-      return matchTitle || matchGenres || matchOverview || matchDirector;
-    });
-  }, [searchQuery]);
+  const searchResults = search.results;
 
   // General Filter / Sort for Catalog
   const filterAndSort = (items) => {
@@ -131,9 +135,9 @@ export default function App() {
     return result;
   };
 
-  const filteredSeries = useMemo(() => filterAndSort(POPULAR_SERIES), [selectedCategory, selectedType, sortBy]);
-  const filteredMovies = useMemo(() => filterAndSort(POPULAR_MOVIES), [selectedCategory, selectedType, sortBy]);
-  const filteredAnimation = useMemo(() => filterAndSort(ANIMATION_SERIES), [selectedCategory, selectedType, sortBy]);
+  const filteredSeries = useMemo(() => filterAndSort(seriesItems), [seriesItems, selectedCategory, selectedType, sortBy]);
+  const filteredMovies = useMemo(() => filterAndSort(movieItems), [movieItems, selectedCategory, selectedType, sortBy]);
+  const filteredAnimation = useMemo(() => filterAndSort(animationItems), [animationItems, selectedCategory, selectedType, sortBy]);
 
   return (
     <div className="min-h-screen bg-[#07090e] text-white flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-300">
@@ -155,12 +159,19 @@ export default function App() {
 
       {/* Main Content Area */}
       <main className="flex-1 w-full pt-14 pb-12">
+        {catalogError && !searchQuery.trim() && (
+          <p role="status" className="max-w-[1540px] mx-auto px-4 sm:px-6 mb-3 text-xs text-amber-300/80">
+            Live catalog unavailable ({catalogError}). Showing the sample catalog.
+          </p>
+        )}
         
         {/* If user is actively searching */}
         {searchQuery.trim() ? (
           <SearchResults
             query={searchQuery}
             results={searchResults}
+            loading={search.loading}
+            error={search.error}
             onWatch={handleWatch}
             watchlist={watchlist}
             onToggleWatchlist={handleToggleWatchlist}
@@ -174,7 +185,7 @@ export default function App() {
                 {/* Hero Banner Carousel (Shown on Home/All) */}
                 {activeTab === 'all' && (
                   <HeroBanner
-                    banners={HERO_BANNERS}
+                    banners={heroItems}
                     onWatch={handleWatch}
                     onTrailer={handleTrailer}
                     watchlist={watchlist}
@@ -195,6 +206,7 @@ export default function App() {
                 {/* Top 10 Ranked Section */}
                 {(activeTab === 'all' || activeTab === 'top-ranked') && (
                   <TopRankedSection
+                    items={topItems}
                     onWatch={handleWatch}
                     watchlist={watchlist}
                     onToggleWatchlist={handleToggleWatchlist}

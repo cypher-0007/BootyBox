@@ -16,14 +16,17 @@ import {
   Download
 } from 'lucide-react';
 import { PirateSkull } from './PirateIcons';
+import { useItemDetails } from '../hooks/useTMDB';
 
 export default function VideoPlayerModal({ 
-  item, 
+  item: selectedItem, 
   onClose, 
   watchlist = [], 
   onToggleWatchlist, 
   onToast 
 }) {
+  const { data: item, loading: detailsLoading, error: detailsError } = useItemDetails(selectedItem);
+  const isTrailerMode = Boolean(selectedItem.playTrailer);
   const [isPlaying, setIsPlaying] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -201,10 +204,27 @@ export default function VideoPlayerModal({
               <PirateSkull className="w-10 h-10 text-amber-400 animate-spin" />
               <span className="text-xs font-mono text-amber-300">Connecting to stream...</span>
             </div>
+          ) : isTrailerMode && item.trailerUrl?.includes('youtube.com/embed/') ? (
+            <iframe
+              src={item.trailerUrl}
+              title={`${item.title} official trailer`}
+              allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="w-full h-full border-0"
+            />
+          ) : isTrailerMode && !item.trailerUrl ? (
+            <div role={detailsLoading ? 'status' : 'alert'} className="max-w-md px-6 text-center text-sm text-slate-300">
+              {detailsLoading || (selectedItem.tmdbId && item === selectedItem && !detailsError)
+                ? 'Finding an official trailer…'
+                : detailsError
+                  ? `Could not load trailer: ${detailsError}`
+                  : `No official trailer is available for ${item.title}.`}
+            </div>
           ) : (
             <video
               ref={videoRef}
-              src={item.videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
+              src={isTrailerMode ? item.trailerUrl : item.videoUrl || "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"}
               poster={item.backdrop}
               autoPlay
               playsInline
@@ -215,8 +235,19 @@ export default function VideoPlayerModal({
             />
           )}
 
+          {isTrailerMode && item.trailerUrl?.includes('youtube.com/embed/') && (
+            <a
+              href={item.trailerUrl.replace('youtube.com/embed/', 'youtube.com/watch?v=').split('?')[0]}
+              target="_blank"
+              rel="noreferrer"
+              className="absolute bottom-3 right-3 rounded-lg bg-black/75 px-3 py-1.5 text-xs font-semibold text-white hover:text-amber-300"
+            >
+              Open on YouTube
+            </a>
+          )}
+
           {/* Big Center Play Icon when Paused */}
-          {!isPlaying && !isLoadingStream && (
+          {!isTrailerMode && !isPlaying && !isLoadingStream && (
             <div 
               onClick={togglePlay}
               className="absolute inset-0 flex items-center justify-center bg-black/40 cursor-pointer"
@@ -228,7 +259,7 @@ export default function VideoPlayerModal({
           )}
 
           {/* Custom Controls */}
-          <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-3 sm:p-5 transition-opacity duration-300 ${
+          {!isTrailerMode && <div className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/95 via-black/70 to-transparent p-3 sm:p-5 transition-opacity duration-300 ${
             showControls ? 'opacity-100' : 'opacity-0 pointer-events-none'
           }`}>
             
@@ -316,7 +347,7 @@ export default function VideoPlayerModal({
                 </button>
               </div>
             </div>
-          </div>
+          </div>}
         </div>
 
         {/* Bottom Details & Episodes */}
