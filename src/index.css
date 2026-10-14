@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #07090e;
+    --bg-secondary: #0d121c;
+    --bg-card: #121824;
+    --bg-card-hover: #192233;
+    --accent-gold: #f5c35b;
+    --accent-gold-dark: #c28b22;
+    --accent-teal: #0df5c6;
+    --accent-crimson: #ff3b5c;
+    --border-wood: #2a3547;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: #f1f5f9;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+    background-image: 
+      radial-gradient(ellipse at 50% 0%, rgba(13, 245, 198, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 80%, rgba(245, 195, 91, 0.03) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 90%, rgba(255, 59, 92, 0.03) 0%, transparent 50%);
+    background-attachment: fixed;
+  }
+}
+
+/* Custom scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Pirate Gold & Cursed Flame Gradients */
+.gold-gradient-text {
+  background: linear-gradient(135deg, #fff2a3 0%, #f5c35b 40%, #e59934 80%, #b27318 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cursed-gradient-text {
+  background: linear-gradient(91deg, #0df5c6 0%, #1cb7ff 50%, #f5c35b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pirate-gold-btn {
+  background: linear-gradient(135deg, #f5c35b 0%, #e59934 60%, #c27c19 100%);
+  color: #0b0e14;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(245, 195, 91, 0.25);
+  transition: all 0.25s ease;
+  border: 1px solid rgba(255, 242, 163, 0.4);
+}
+
+.pirate-gold-btn:hover {
+  filter: brightness(1.12);
+  box-shadow: 0 6px 25px rgba(245, 195, 91, 0.45);
+  transform: translateY(-2px);
+}
+
+.cursed-btn {
+  background: linear-gradient(135deg, #0df5c6 0%, #00a896 100%);
+  color: #051410;
+  font-weight: 800;
+  box-shadow: 0 4px 20px rgba(13, 245, 198, 0.25);
+  transition: all 0.25s ease;
+}
+
+.cursed-btn:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 6px 25px rgba(13, 245, 198, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Doubloon Gold border glow */
+.gold-glow {
+  box-shadow: 0 0 20px rgba(245, 195, 91, 0.25);
+}
+
+.cursed-glow {
+  box-shadow: 0 0 20px rgba(13, 245, 198, 0.25);
+}
+
+/* Nautical map faint background pattern */
+.nautical-map-grid {
+  background-image: linear-gradient(to right, rgba(245, 195, 91, 0.03) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(245, 195, 91, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}

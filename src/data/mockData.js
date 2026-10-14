@@ -1,0 +1,491 @@
+export const CATEGORIES = [
+  "All",
+  "Action",
+  "Sci-Fi",
+  "Drama",
+  "Adventure",
+  "Comedy",
+  "Horror",
+  "Animation",
+  "Thriller",
+  "Fantasy",
+  "Crime",
+  "Romance"
+];
+
+export const HERO_BANNERS = [
+  {
+    id: "hero-1",
+    title: "Dune: Part Two",
+    originalTitle: "Dune: Part Two",
+    tagline: "Long live the fighters.",
+    type: "Movie",
+    rating: 8.6,
+    votes: "480k",
+    year: 2024,
+    quality: "4K UHD",
+    duration: "2h 46m",
+    genres: ["Sci-Fi", "Adventure", "Action"],
+    ageRating: "PG-13",
+    audio: "Dolby Atmos 5.1",
+    backdrop: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1920&q=80",
+    poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    overview: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family. Facing a choice between the love of his life and the fate of the universe, he endeavors to prevent a terrible future.",
+    director: "Denis Villeneuve",
+    cast: [
+      { name: "Timothée Chalamet", role: "Paul Atreides", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" },
+      { name: "Zendaya", role: "Chani", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" },
+      { name: "Rebecca Ferguson", role: "Lady Jessica", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" }
+    ],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+    trailerUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4",
+    seasons: null
+  },
+  {
+    id: "hero-2",
+    title: "Shōgun",
+    originalTitle: "Shōgun",
+    tagline: "Destiny is a matter of choice, not chance.",
+    type: "TV Series",
+    rating: 8.8,
+    votes: "165k",
+    year: 2024,
+    quality: "4K HDR",
+    duration: "Season 1 (10 Episodes)",
+    genres: ["Drama", "Action", "Adventure"],
+    ageRating: "18+",
+    audio: "Dolby 5.1 Surround",
+    backdrop: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1920&q=80",
+    poster: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80",
+    overview: "In Japan in the year 1600, Lord Yoshii Toranaga is fighting for his life as his enemies on the Council of Regents unite against him, when a mysterious European ship is found marooned in a nearby fishing village.",
+    director: "Rachel Kondo & Justin Marks",
+    cast: [
+      { name: "Hiroyuki Sanada", role: "Lord Toranaga", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" },
+      { name: "Cosmo Jarvis", role: "John Blackthorne", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80" },
+      { name: "Anna Sawai", role: "Toda Mariko", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" }
+    ],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+    trailerUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+    seasons: [
+      {
+        seasonNumber: 1,
+        title: "Season 1",
+        episodes: [
+          { ep: 1, title: "Anjin", duration: "70m", thumbnail: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=500&q=80", overview: "Destinies converge in Japan when a barbarian ship washes ashore in a warlord's fiefdom." },
+          { ep: 2, title: "Servants of Two Masters", duration: "59m", thumbnail: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=500&q=80", overview: "Blackthorne's arrival in Osaka stirs a hornet's nest of rivalries." },
+          { ep: 3, title: "Tomorrow is Tomorrow", duration: "56m", thumbnail: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=500&q=80", overview: "After Blackthorne survives an assassin's strike, Toranaga realizes he must smuggle his allies out." },
+          { ep: 4, title: "The Eightfold Fence", duration: "58m", thumbnail: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=500&q=80", overview: "Blackthorne and Mariko test their new alliance as they train Toranaga's gunnery squad." }
+        ]
+      }
+    ]
+  },
+  {
+    id: "hero-3",
+    title: "Arcane",
+    originalTitle: "Arcane: League of Legends",
+    tagline: "Every legend has a beginning.",
+    type: "Animation",
+    rating: 9.0,
+    votes: "320k",
+    year: 2024,
+    quality: "4K UHD",
+    duration: "Season 2",
+    genres: ["Animation", "Sci-Fi", "Action", "Fantasy"],
+    ageRating: "16+",
+    audio: "Original EN / Multi-Lang",
+    backdrop: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1920&q=80",
+    poster: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80",
+    overview: "Set in the utopian region of Piltover and the oppressed underground of Zaun, the story follows the origins of two iconic League champions-and the power that will tear them apart.",
+    director: "Christian Linke & Alex Yee",
+    cast: [
+      { name: "Hailee Steinfeld", role: "Vi", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" },
+      { name: "Ella Purnell", role: "Jinx", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" }
+    ],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4",
+    trailerUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+    seasons: null
+  }
+];
+
+export const POPULAR_SERIES = [
+  {
+    id: "ser-1",
+    title: "Stranger Things",
+    poster: "https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.7,
+    year: 2024,
+    type: "TV Series",
+    episodesCount: "Season 5",
+    quality: "4K",
+    genres: ["Sci-Fi", "Horror", "Drama"],
+    overview: "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+    director: "The Duffer Brothers",
+    cast: [{ name: "Millie Bobby Brown", role: "Eleven", avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+    id: "ser-2",
+    title: "The Last of Us",
+    poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.8,
+    year: 2025,
+    type: "TV Series",
+    episodesCount: "Season 2",
+    quality: "4K UHD",
+    genres: ["Drama", "Action", "Adventure"],
+    overview: "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope.",
+    director: "Craig Mazin & Neil Druckmann",
+    cast: [{ name: "Pedro Pascal", role: "Joel", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+  },
+  {
+    id: "ser-3",
+    title: "Severance",
+    poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.7,
+    year: 2025,
+    type: "TV Series",
+    episodesCount: "Season 2",
+    quality: "4K",
+    genres: ["Sci-Fi", "Thriller", "Drama"],
+    overview: "Mark leads a team of office workers whose memories have been surgically divided between their work and personal lives.",
+    director: "Ben Stiller",
+    cast: [{ name: "Adam Scott", role: "Mark Scout", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+  },
+  {
+    id: "ser-4",
+    title: "House of the Dragon",
+    poster: "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.4,
+    year: 2024,
+    type: "TV Series",
+    episodesCount: "Season 2",
+    quality: "4K HDR",
+    genres: ["Fantasy", "Action", "Drama"],
+    overview: "The story of the House Targaryen set 200 years before the events of Game of Thrones.",
+    director: "Ryan J. Condal",
+    cast: [{ name: "Emma D'Arcy", role: "Rhaenyra Targaryen", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+  },
+  {
+    id: "ser-5",
+    title: "The Bear",
+    poster: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.6,
+    year: 2024,
+    type: "TV Series",
+    episodesCount: "Season 3",
+    quality: "HD",
+    genres: ["Drama", "Comedy"],
+    overview: "A young fine-dining chef returns home to Chicago to run his family Italian beef sandwich shop after a tragic loss.",
+    director: "Christopher Storer",
+    cast: [{ name: "Jeremy Allen White", role: "Carmy", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+  },
+  {
+    id: "ser-6",
+    title: "The Boys",
+    poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.7,
+    year: 2024,
+    type: "TV Series",
+    episodesCount: "Season 4",
+    quality: "4K",
+    genres: ["Action", "Comedy", "Sci-Fi"],
+    overview: "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers.",
+    director: "Eric Kripke",
+    cast: [{ name: "Antony Starr", role: "Homelander", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+  }
+];
+
+export const POPULAR_MOVIES = [
+  {
+    id: "mov-1",
+    title: "Oppenheimer",
+    poster: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.9,
+    year: 2023,
+    type: "Movie",
+    duration: "3h 00m",
+    quality: "4K UHD",
+    genres: ["Drama", "Thriller"],
+    overview: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb during World War II.",
+    director: "Christopher Nolan",
+    cast: [{ name: "Cillian Murphy", role: "J. Robert Oppenheimer", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+    id: "mov-2",
+    title: "Spider-Man: Across the Spider-Verse",
+    poster: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.7,
+    year: 2023,
+    type: "Animation",
+    duration: "2h 20m",
+    quality: "4K",
+    genres: ["Animation", "Action", "Adventure", "Sci-Fi"],
+    overview: "Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.",
+    director: "Joaquim Dos Santos & Kemp Powers",
+    cast: [{ name: "Shameik Moore", role: "Miles Morales", avatar: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+  },
+  {
+    id: "mov-3",
+    title: "Interstellar",
+    poster: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.7,
+    year: 2014,
+    type: "Movie",
+    duration: "2h 49m",
+    quality: "4K UHD",
+    genres: ["Sci-Fi", "Drama", "Adventure"],
+    overview: "When Earth becomes uninhabitable in the future, a farmer and ex-NASA pilot, Joseph Cooper, is tasked to pilot a spacecraft along with a team of researchers to find a new planet for humans.",
+    director: "Christopher Nolan",
+    cast: [{ name: "Matthew McConaughey", role: "Cooper", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+  },
+  {
+    id: "mov-4",
+    title: "The Dark Knight",
+    poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80",
+    rating: 9.0,
+    year: 2008,
+    type: "Movie",
+    duration: "2h 32m",
+    quality: "4K UHD",
+    genres: ["Action", "Crime", "Drama"],
+    overview: "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    director: "Christopher Nolan",
+    cast: [{ name: "Christian Bale", role: "Bruce Wayne", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+  },
+  {
+    id: "mov-5",
+    title: "Gladiator II",
+    poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=1200&q=80",
+    rating: 7.8,
+    year: 2024,
+    type: "Movie",
+    duration: "2h 28m",
+    quality: "4K",
+    genres: ["Action", "Adventure", "Drama"],
+    overview: "Years after witnessing the death of Maximus at the hands of his uncle, Lucius must enter the Colosseum after the emperors of Rome conquer his home.",
+    director: "Ridley Scott",
+    cast: [{ name: "Paul Mescal", role: "Lucius", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+  },
+  {
+    id: "mov-6",
+    title: "Inception",
+    poster: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=600&q=80",
+    backdrop: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+    rating: 8.8,
+    year: 2010,
+    type: "Movie",
+    duration: "2h 28m",
+    quality: "4K",
+    genres: ["Sci-Fi", "Action", "Adventure"],
+    overview: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    director: "Christopher Nolan",
+    cast: [{ name: "Leonardo DiCaprio", role: "Cobb", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" }],
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+  }
+];
+
+export const TOP_RANKED = [
+  {
+    rank: 1,
+    id: "top-1",
+    title: "Dune: Part Two",
+    poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    rating: 8.6,
+    year: 2024,
+    type: "Movie",
+    quality: "4K UHD",
+    views: "4.2M views",
+    genres: ["Sci-Fi", "Action"]
+  },
+  {
+    rank: 2,
+    id: "top-2",
+    title: "Shōgun",
+    poster: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+    rating: 8.8,
+    year: 2024,
+    type: "TV Series",
+    quality: "4K HDR",
+    views: "3.8M views",
+    genres: ["Drama", "Action"]
+  },
+  {
+    rank: 3,
+    id: "top-3",
+    title: "Arcane",
+    poster: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    rating: 9.0,
+    year: 2024,
+    type: "Animation",
+    quality: "4K UHD",
+    views: "3.5M views",
+    genres: ["Animation", "Sci-Fi"]
+  },
+  {
+    rank: 4,
+    id: "top-4",
+    title: "Oppenheimer",
+    poster: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80",
+    rating: 8.9,
+    year: 2023,
+    type: "Movie",
+    quality: "4K UHD",
+    views: "3.1M views",
+    genres: ["Drama", "Thriller"]
+  },
+  {
+    rank: 5,
+    id: "top-5",
+    title: "Stranger Things",
+    poster: "https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=600&q=80",
+    rating: 8.7,
+    year: 2024,
+    type: "TV Series",
+    quality: "4K",
+    views: "2.9M views",
+    genres: ["Sci-Fi", "Horror"]
+  },
+  {
+    rank: 6,
+    id: "top-6",
+    title: "Spider-Man: Across the Spider-Verse",
+    poster: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    rating: 8.7,
+    year: 2023,
+    type: "Animation",
+    quality: "4K",
+    views: "2.6M views",
+    genres: ["Animation", "Action"]
+  },
+  {
+    rank: 7,
+    id: "top-7",
+    title: "The Last of Us",
+    poster: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80",
+    rating: 8.8,
+    year: 2025,
+    type: "TV Series",
+    quality: "4K",
+    views: "2.4M views",
+    genres: ["Drama", "Adventure"]
+  },
+  {
+    rank: 8,
+    id: "top-8",
+    title: "Severance",
+    poster: "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=600&q=80",
+    rating: 8.7,
+    year: 2025,
+    type: "TV Series",
+    quality: "4K",
+    views: "2.1M views",
+    genres: ["Sci-Fi", "Thriller"]
+  },
+  {
+    rank: 9,
+    id: "top-9",
+    title: "The Dark Knight",
+    poster: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&q=80",
+    rating: 9.0,
+    year: 2008,
+    type: "Movie",
+    quality: "4K UHD",
+    views: "1.9M views",
+    genres: ["Action", "Crime"]
+  },
+  {
+    rank: 10,
+    id: "top-10",
+    title: "House of the Dragon",
+    poster: "https://images.unsplash.com/photo-1514533450685-4493e01d1fdc?auto=format&fit=crop&w=600&q=80",
+    rating: 8.4,
+    year: 2024,
+    type: "TV Series",
+    quality: "4K",
+    views: "1.8M views",
+    genres: ["Fantasy", "Action"]
+  }
+];
+
+export const ANIMATION_SERIES = [
+  {
+    id: "anim-1",
+    title: "Jujutsu Kaisen",
+    poster: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=600&q=80",
+    rating: 8.6,
+    year: 2024,
+    type: "Animation",
+    episodesCount: "Season 2",
+    quality: "1080p",
+    genres: ["Animation", "Action", "Fantasy"],
+    overview: "A boy swallows a cursed talisman - the finger of a demon - and becomes cursed himself. He enters a shaman's school to be able to locate the demon's other body parts and thus exorcise himself.",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+  },
+  {
+    id: "anim-2",
+    title: "Attack on Titan",
+    poster: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=600&q=80",
+    rating: 9.1,
+    year: 2023,
+    type: "Animation",
+    episodesCount: "Final Season",
+    quality: "4K UHD",
+    genres: ["Animation", "Action", "Drama"],
+    overview: "After his hometown is destroyed and his mother is killed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
+  },
+  {
+    id: "anim-3",
+    title: "Demon Slayer: Kimetsu no Yaiba",
+    poster: "https://images.unsplash.com/photo-1509281373149-e957c6296406?auto=format&fit=crop&w=600&q=80",
+    rating: 8.6,
+    year: 2024,
+    type: "Animation",
+    episodesCount: "Hashira Training",
+    quality: "4K",
+    genres: ["Animation", "Action", "Fantasy"],
+    overview: "A family is attacked by demons and only two members survive - Tanjiro and his sister Nezuko, who is turning into a demon herself. Tanjiro sets out on a quest to become a demon slayer.",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+  },
+  {
+    id: "anim-4",
+    title: "Solo Leveling",
+    poster: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=600&q=80",
+    rating: 8.5,
+    year: 2024,
+    type: "Animation",
+    episodesCount: "Season 1",
+    quality: "4K",
+    genres: ["Animation", "Action", "Fantasy"],
+    overview: "In a world where hunters must battle deadly monsters to protect humanity, Sung Jinwoo, notoriously known as 'the weakest hunter of all mankind,' finds himself in a struggle for survival.",
+    videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+  }
+];
+
+export const ALL_MEDIA = [
+  ...HERO_BANNERS,
+  ...POPULAR_SERIES,
+  ...POPULAR_MOVIES,
+  ...ANIMATION_SERIES
+];
